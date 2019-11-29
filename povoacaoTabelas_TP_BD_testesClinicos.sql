@@ -29,7 +29,6 @@ INSERT INTO testesclinicos.CODIGO_POSTAL (codigo_postal, localidade) VALUES ('47
 INSERT INTO testesclinicos.CODIGO_POSTAL (codigo_postal, localidade) VALUES ('4720-999', 'AMARES');
 INSERT INTO testesclinicos.CODIGO_POSTAL (codigo_postal, localidade) VALUES ('4720-492', 'GOÃES AMR');
 INSERT INTO testesclinicos.CODIGO_POSTAL (codigo_postal, localidade) VALUES ('4720-448', 'FISCAL');
-INSERT INTO testesclinicos.CODIGO_POSTAL (codigo_postal, localidade) VALUES ('4720-448', 'FISCAL');
 INSERT INTO testesclinicos.CODIGO_POSTAL (codigo_postal, localidade) VALUES ('8001-901', 'FARO');
 INSERT INTO testesclinicos.CODIGO_POSTAL (codigo_postal, localidade) VALUES ('8201-901', 'ALBUFEIRA');
 INSERT INTO testesclinicos.CODIGO_POSTAL (codigo_postal, localidade) VALUES ('8700-513', 'OLHÃO');
@@ -97,14 +96,9 @@ INSERT INTO testesclinicos.MEDICO (idMedico, fName, lName, dataNascimento, codig
 INSERT INTO testesclinicos.MEDICO (idMedico, fName, lName, dataNascimento, codigo_postal, morada, idTeste_Clinico) VALUES (123548, 'Fátima','Campos', '1968-12-24', '2610-181','Rua Central n.º 260',13);
 INSERT INTO testesclinicos.MEDICO (idMedico, fName, lName, dataNascimento, codigo_postal, morada, idTeste_Clinico) VALUES (498351, 'Marco','Caeiro', '1985-02-12', '4700-001','Rua de Espanha n.º 240, 1.º ESQ',13);
 INSERT INTO testesclinicos.MEDICO (idMedico, fName, lName, dataNascimento, codigo_postal, morada, idTeste_Clinico) VALUES (984651, 'Orlando','Marques', '1986-05-12', '2695-833','Rua da Talha n.º 30',8);
-
-
-INSERT INTO testesclinicos.MEDICO (idMedico, fName, lName, dataNascimento, codigo_postal, morada, idTeste_Clinico) VALUES (132136, 'Maria','Sameiro', '1984-02-28', '3040-382','Rua Alta n.º 121, 3.º ESQ',7);
-INSERT INTO testesclinicos.MEDICO (idMedico, fName, lName, dataNascimento, codigo_postal, morada, idTeste_Clinico) VALUES (716516, 'Filipa','Carvalho', '1981-04-13', '4935-114','Rua 1º de Maio n.º 22, 1.º ESQ',6);
-INSERT INTO testesclinicos.MEDICO (idMedico, fName, lName, dataNascimento, codigo_postal, morada, idTeste_Clinico) VALUES (953515, 'Alváro','Alves', '1989-05-01', '4700-001','Rua 25 de Abril n.º 14',6);
-
-
-
+INSERT INTO testesclinicos.MEDICO (idMedico, fName, lName, dataNascimento, codigo_postal, morada, idTeste_Clinico) VALUES (132136, 'Rolando','Varela', '1995-02-28', '5300-411','Rua da Planície n.º 25, 3.º ESQ',8);
+INSERT INTO testesclinicos.MEDICO (idMedico, fName, lName, dataNascimento, codigo_postal, morada, idTeste_Clinico) VALUES (716516, 'Filipa','Alves', '1991-04-13', '8800-112','Rua 1º de Maio n.º 25, 1.º ESQ',9);
+INSERT INTO testesclinicos.MEDICO (idMedico, fName, lName, dataNascimento, codigo_postal, morada, idTeste_Clinico) VALUES (953515, 'João','Cabral', '1988-04-01', '4700-001','Rua 3 n.º 14',9);
 
 
 /* Insercao de modalidades*/
@@ -138,7 +132,7 @@ INSERT INTO testesclinicos.ATLETA (cc, fName, lName, dataNascimento, nome_Pai, n
 INSERT INTO testesclinicos.ATLETA (cc, fName, lName, dataNascimento, nome_Pai, nome_Mae, numContribuinte, codigo_postal, idModalidade, idCategoria, morada) VALUES (124789, 'Manuel','Joao', '1991-04-22', 'Duarte Joao', 'Maria Pinto', 254123689, '4700-001', 11, 1,'Rua de Cima n.º 753, 4.º DTO');
 INSERT INTO testesclinicos.ATLETA (cc, fName, lName, dataNascimento, nome_Pai, nome_Mae, numContribuinte, codigo_postal, idModalidade, idCategoria, morada) VALUES (164821, 'José','Pires', '1999-04-14', 'Carlos Silva', 'Patrícia Matos', 256147659, '4700-004', 14, 1,'Rua de Baixo n.º 26');
 INSERT INTO testesclinicos.ATLETA (cc, fName, lName, dataNascimento, nome_Pai, nome_Mae, numContribuinte, codigo_postal, idModalidade, idCategoria, morada) VALUES (178511, 'António','Silva', '1997-03-12', 'Francisco Silva', 'Francisca Silva', 256785659, '4700-003', 13, 2,'Rua da Esquerda n.º 28');
-INSERT INTO testesclinicos.ATLETA (cc, fName, lName, dataNascimento, nome_Pai, nome_Mae, numContribuinte, codigo_postal, idModalidade, idCategoria, morada) VALUES (164821, 'José','Creissac', '1985-12-19', 'Luis Creissac', 'Ana Fernandes', 257564231, '4700-001', 5, 1,'Rua da Liberdade n.º 50');
+INSERT INTO testesclinicos.ATLETA (cc, fName, lName, dataNascimento, nome_Pai, nome_Mae, numContribuinte, codigo_postal, idModalidade, idCategoria, morada) VALUES (164822, 'José','Creissac', '1985-12-19', 'Luis Creissac', 'Ana Fernandes', 257564231, '4700-001', 5, 1,'Rua da Liberdade n.º 50');
 
 /* Insercao das consultas*/
 INSERT INTO testesclinicos.CONSULTA (idTeste_Clinico, idAtleta, data_hora, estado) VALUES (1, 123456, '2016-01-23 14:30', 'Pendente');
