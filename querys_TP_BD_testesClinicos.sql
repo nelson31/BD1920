@@ -29,26 +29,28 @@ from medico m, codigo_postal cp
 where m.codigo_postal = cp.codigo_postal and cp.localidade = 'Viana do Castelo';
 
 #Apresenta o atleta mais velho
-select a.fName, max(idade(a.DataNascimento))
+select a.fName, maxtestesclinicos(idade(a.DataNascimento))
 from atleta a;
 
 #Apresenta as datas das consultas futuras (pendentes) do atleta com cc 123456, qual a especialidade e o médico do teste clinico a realizar
 select a.fName, tc.data_hora, m.fName, m.lName, e.designacao 
 from atleta a, teste_clinico tc, medico m, especialidade e
-where tc.idAtleta = a.cc and a.cc = '123456' and tc.estado = 'pendente' and tc.idMedico = m.idMedico and m.idEspecialidade = e.idEspecialidade;
+where tc.idAtleta = a.cc and a.cc = '123456' and efetuado(tc.data_hora) = false and tc.idMedico = m.idMedico and m.idEspecialidade = e.idEspecialidade;
 
-#Apresenta as datas das consultas já efetuadas do atleta com cc 123456 qual a especialidade e o médico do teste clinico a realizar
+#Apresenta as datas das consultas já efetuadas do atleta com cc 123456 qual a especialidade e o médico do teste clinico realizados
 select a.fName, tc.data_hora, m.fName, m.lName, e.designacao 
 from atleta a, teste_clinico tc, medico m, especialidade e
 where tc.idAtleta = a.cc and a.cc = '123456' and efetuado(tc.data_hora) = true and tc.idMedico = m.idMedico and m.idEspecialidade = e.idEspecialidade;
 
+#Apresenta o número de testes médicos aprovados, em avaliação e chumbados nos testes médicos
+select r.designacao, count(r.idResultado)
+from atleta a, teste_clinico tc, resultado r
+where a.cc = tc.idAtleta and tc.idResultado = r.idResultado
+group by r.idResultado;
 
-#Apresenta as datas das consultas já efetuadas do médico com cc 123489 e qual o teste clinico a realizar
-select m.fName, c.data_hora, tc.tipo
-from medico m, consulta c, teste_clinico tc
-where tc.idTeste_Clinico = m.idTeste_Clinico and m.idMedico = '123489' and c.idTeste_Clinico = tc.idTeste_Clinico and c.estado = 'efetuado'; 
 
-#Apresenta as datas das consultas já efetuadas do atleta com cc 123456, qual o teste clinico a realizar e qual o médico
-select a.fName, c.data_hora, tc.tipo, m.fName
-from atleta a, consulta c, teste_clinico tc, medico m
-where c.idAtleta = a.cc and a.cc = '123456' and c.estado = 'efetuado' and c.idTeste_Clinico = tc.idTeste_Clinico and tc.idTeste_Clinico = m.idTeste_Clinico;
+#Apresenta a percentagem de testes médicos aprovados, em avaliação e chumbados nos teste médicos
+select r.designacao, mediaRes(count(tc.data_hora),count(r.idResultado))
+from atleta a, teste_clinico tc, resultado r
+where a.cc = tc.idAtleta and tc.idResultado = r.idResultado 
+group by r.idResultado;

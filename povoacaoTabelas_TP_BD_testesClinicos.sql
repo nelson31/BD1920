@@ -14,25 +14,47 @@ END //
 DELIMITER ;
 
 
-
-
-
 DELIMITER //
 CREATE FUNCTION `efetuado` (dta datetime) RETURNS BOOLEAN
 BEGIN
 
 DECLARE res BOOLEAN;
-SET res = false;
+SET res = true;
 
-if(TIMESTAMPDIFF(YEAR, dta, CURDATE())>0) THEN 
-	SET res = true;
-END if;
+IF(TIMESTAMPDIFF(YEAR, dta, CURDATE())<0) THEN 
+    SET res = false;
+END IF;
+IF(TIMESTAMPDIFF(MONTH, dta, CURDATE())<0) THEN 
+    SET res = false;
+END IF;
+IF(TIMESTAMPDIFF(DAY, dta, CURDATE())<0) THEN 
+    SET res = false;
+END IF;
+IF(TIMESTAMPDIFF(HOUR, dta, CURTIME())<0) THEN 
+    SET res = false;
+END IF;
+IF(TIMESTAMPDIFF(MINUTE, dta, CURTIME())<0) THEN 
+    SET res = false;
+END IF;
 
 RETURN res;
 
 END //
 DELIMITER ;
 
+DELIMITER //
+CREATE FUNCTION `mediaRes` (nT int, nR int) RETURNS DOUBLE
+BEGIN
+DECLARE res DOUBLE;
+
+#SET res = nR+1;
+SET res = nR*100.0;
+
+SET res = res/nT;
+
+RETURN res;
+END //
+DELIMITER ;
 
 
 
@@ -179,14 +201,22 @@ INSERT INTO testesclinicos.ATLETA (cc, fName, lName, dataNascimento, nome_Pai, n
 INSERT INTO testesclinicos.ATLETA (cc, fName, lName, dataNascimento, nome_Pai, nome_Mae, numContribuinte, codigo_postal, idModalidade, idCategoria, morada, idGenero) VALUES (117985, 'Rita','Morais', '1997-10-22', 'Miguel Morais', 'Sara Morais', 21984654, '4730-062', 04, 1,'Rua da Praia n.º 20', 1);
 INSERT INTO testesclinicos.ATLETA (cc, fName, lName, dataNascimento, nome_Pai, nome_Mae, numContribuinte, codigo_postal, idModalidade, idCategoria, morada, idGenero) VALUES (113215, 'Bruna','Barbosa', '1998-12-21', 'Heitor Barbosa', 'Zulmira Barbosa', 21263514, '2765-598', 09, 1,'Rua dos Pescadores n.º 23', 1);
 
-
+/* Insercao de resultados*/
+INSERT INTO testesclinicos.RESULTADO (idResultado,designacao) VALUES(1,'Aprovado');
+INSERT INTO testesclinicos.RESULTADO (idResultado,designacao) VALUES(2,'Em avaliação');
+INSERT INTO testesclinicos.RESULTADO (idResultado,designacao) VALUES(3,'Chumbado');
 
 
 
 /* Insercao dos Testes Clínicos*/
-INSERT INTO testesclinicos.TESTE_CLINICO (idAtleta, idMedico, data_hora, estado, duracao, codigo_postal) VALUES (123456, 123489, '2016-01-23 14:30', 'Efetuado', '00:15:00', '3025-106');
-INSERT INTO testesclinicos.TESTE_CLINICO (idAtleta, idMedico, data_hora, estado, duracao, codigo_postal) VALUES (123456, 223456, '2021-08-27 9:30', 'Pendente','00:25:00','4935-114');
-INSERT INTO testesclinicos.TESTE_CLINICO (idAtleta, idMedico, data_hora, estado, duracao, codigo_postal) VALUES (652354,  123489, '2015-08-27 9:30', 'Efetuado','00:35:00','4700-003');
+INSERT INTO testesclinicos.TESTE_CLINICO (idAtleta, idMedico, data_hora, duracao, codigo_postal, idResultado) VALUES (123456, 123489, '2016-01-23 14:30', '00:15:00', '3025-106', 1);
+INSERT INTO testesclinicos.TESTE_CLINICO (idAtleta, idMedico, data_hora, duracao, codigo_postal, idResultado) VALUES (123456, 223456, '2021-08-27 9:30', '00:25:00','4935-114', 2);
+INSERT INTO testesclinicos.TESTE_CLINICO (idAtleta, idMedico, data_hora, duracao, codigo_postal, idResultado) VALUES (652354,  123489, '2015-08-27 9:30', '00:35:00','4700-003', 3);
+INSERT INTO testesclinicos.TESTE_CLINICO (idAtleta, idMedico, data_hora, duracao, codigo_postal, idResultado) VALUES (123456, 223456, '2019-11-27 9:30', '00:25:00','4935-114', 2);
+INSERT INTO testesclinicos.TESTE_CLINICO (idAtleta, idMedico, data_hora, duracao, codigo_postal, idResultado) VALUES (123456, 223456, '2019-12-27 9:30', '00:25:00','4935-114', 3);
+INSERT INTO testesclinicos.TESTE_CLINICO (idAtleta, idMedico, data_hora, duracao, codigo_postal, idResultado) VALUES (123456, 223456, '2019-12-01 9:30', '00:25:00','4935-114', 1);
+INSERT INTO testesclinicos.TESTE_CLINICO (idAtleta, idMedico, data_hora, duracao, codigo_postal, idResultado) VALUES (123456, 223456, '2019-12-03 9:30', '00:25:00','4935-114', 1);
+INSERT INTO testesclinicos.TESTE_CLINICO (idAtleta, idMedico, data_hora, duracao, codigo_postal, idResultado) VALUES (123456, 223456, '2019-12-03 23:50', '00:25:00','4935-114', 2);
 
 /* Insercao dos contactos*/
 INSERT INTO testesclinicos.CONTACTO (contacto,cc_Atleta) VALUES ('992232223',123456);
@@ -199,5 +229,4 @@ INSERT INTO testesclinicos.CONTACTO (contacto,cc_Atleta) VALUES ('915489512',164
 INSERT INTO testesclinicos.CONTACTO (contacto,cc_Atleta) VALUES ('917895135',178511);
 INSERT INTO testesclinicos.CONTACTO (contacto,cc_Atleta) VALUES ('912448789',164821);
 INSERT INTO testesclinicos.CONTACTO (contacto,cc_Atleta) VALUES ('913658434',164821);
-
 
