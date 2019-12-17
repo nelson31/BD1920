@@ -42,21 +42,6 @@ RETURN res;
 END //
 DELIMITER ;
 
-DELIMITER //
-CREATE FUNCTION `mediaRes` (nT int, nR int) RETURNS DOUBLE
-BEGIN
-DECLARE res DOUBLE;
-
-#SET res = nR+1;
-SET res = nR*100.0;
-
-SET res = res/nT;
-
-RETURN res;
-END //
-DELIMITER ;
-
-
 
 
 
@@ -204,7 +189,7 @@ INSERT INTO testesclinicos.ATLETA (cc, fName, lName, dataNascimento, nome_Pai, n
 /* Insercao de resultados*/
 INSERT INTO testesclinicos.RESULTADO (idResultado,designacao) VALUES(1,'Aprovado');
 INSERT INTO testesclinicos.RESULTADO (idResultado,designacao) VALUES(2,'Em avaliação');
-INSERT INTO testesclinicos.RESULTADO (idResultado,designacao) VALUES(3,'Chumbado');
+INSERT INTO testesclinicos.RESULTADO (idResultado,designacao) VALUES(3,'Reprovado');
 
 
 
@@ -216,7 +201,7 @@ INSERT INTO testesclinicos.TESTE_CLINICO (idAtleta, idMedico, data_hora, duracao
 INSERT INTO testesclinicos.TESTE_CLINICO (idAtleta, idMedico, data_hora, duracao, codigo_postal, idResultado) VALUES (123456, 223456, '2019-12-27 9:30', '00:25:00','4935-114', 3);
 INSERT INTO testesclinicos.TESTE_CLINICO (idAtleta, idMedico, data_hora, duracao, codigo_postal, idResultado) VALUES (123456, 223456, '2019-12-01 9:30', '00:25:00','4935-114', 1);
 INSERT INTO testesclinicos.TESTE_CLINICO (idAtleta, idMedico, data_hora, duracao, codigo_postal, idResultado) VALUES (123456, 223456, '2019-12-03 9:30', '00:25:00','4935-114', 1);
-INSERT INTO testesclinicos.TESTE_CLINICO (idAtleta, idMedico, data_hora, duracao, codigo_postal, idResultado) VALUES (123456, 223456, '2019-12-03 23:50', '00:25:00','4935-114', 2);
+INSERT INTO testesclinicos.TESTE_CLINICO (idAtleta, idMedico, data_hora, duracao, codigo_postal, idResultado) VALUES (123456, 223456, '2019-12-03 23:50', '00:25:00','4935-114', 3);
 
 /* Insercao dos contactos*/
 INSERT INTO testesclinicos.CONTACTO (contacto,cc_Atleta) VALUES ('992232223',123456);
