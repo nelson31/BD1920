@@ -20,7 +20,7 @@ public class Atleta {
     private String genero;
     private List<String> contactos;
 
-    public Atleta(int cc, String fName, String lName, String dataNascimento, String nome_Pai, String nome_Mae, int numContribuinte, String codigo_postal, String modalidade, String categoria, String morada, String genero, List<String> conts) {
+    public Atleta(int cc, String fName, String lName, String dataNascimento, String nome_Mae, String nome_Pai, int numContribuinte, String codigo_postal, String modalidade, String categoria, String morada, String genero, List<String> conts) {
         this.cc = cc;
         this.fName = fName;
         this.lName = lName;
