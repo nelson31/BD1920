@@ -83,7 +83,11 @@ INSERT INTO testesclinicos.CODIGO_POSTAL (codigo_postal, localidade) VALUES ('70
 INSERT INTO testesclinicos.CODIGO_POSTAL (codigo_postal, localidade) VALUES ('9050-050', 'FUNCHAL');
 INSERT INTO testesclinicos.CODIGO_POSTAL (codigo_postal, localidade) VALUES ('9600-112', 'RABO DE PEIXE');
 INSERT INTO testesclinicos.CODIGO_POSTAL (codigo_postal, localidade) VALUES ('4935-114', 'VIANA DO CASTELO');
-
+INSERT INTO testesclinicos.CODIGO_POSTAL (codigo_postal, localidade) VALUES ('3071-909', 'MIRA');
+INSERT INTO testesclinicos.CODIGO_POSTAL (codigo_postal, localidade) VALUES ('3071-908', 'PRAIA DE MIRA');
+INSERT INTO testesclinicos.CODIGO_POSTAL (codigo_postal, localidade) VALUES ('3070-451', 'MIRA');
+INSERT INTO testesclinicos.CODIGO_POSTAL (codigo_postal, localidade) VALUES ('3070-712', 'PRAIA DE MIRA');
+INSERT INTO testesclinicos.CODIGO_POSTAL (codigo_postal, localidade) VALUES ('3070-714', 'PRAIA DE MIRA');
 
 
 /* Insercao de categorias*/
