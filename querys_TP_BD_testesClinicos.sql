@@ -60,5 +60,5 @@ SELECT cp.localidade, AVG(idade(a.dataNascimento)) as Media FROM ATLETA a, CODIG
 WHERE a.codigo_postal=cp.codigo_postal
 GROUP BY cp.localidade;
 
-
-
+# Contar os medicos diferentes envolvidos em testes clinicos
+select count(distinct(idMedico)) from teste_clinico;
