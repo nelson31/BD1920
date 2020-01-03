@@ -69,3 +69,39 @@ from medico m, teste_clinico tc, resultado r
 where tc.idResultado = r.idResultado and tc.idMedico = m.idMedico and r.idResultado = 3
 group by m.idMedico
 order by count(r.idResultado) DESC LIMIT 1;
+
+#Apresenta os médicos com um dado código postal
+select distinct m.fname, m.lname
+from medico m, codigo_postal cp
+where m.codigo_postal = cp.codigo_postal and m.codigo_postal = '4700-001';
+
+#Apresenta os atletas com um dado código postal
+select distinct a.fname, a.lname
+from atleta a, codigo_postal cp
+where a.codigo_postal = cp.codigo_postal and a.codigo_postal = '4720-448';
+
+#Apresenta o número de atletas por modalidade ordenados por ordem crescente
+select m.designacao, count(a.cc)
+from modalidade m, atleta a
+where m.idModalidade = a.idModalidade
+group by m.idModalidade
+order by count(a.cc);
+
+#Apresenta o nome da modalidade com mais atletas
+select m.designacao, count(a.cc)
+from modalidade m, atleta a
+where m.idModalidade = a.idModalidade
+group by m.idModalidade
+order by count(a.cc) DESC LIMIT 1;
+
+#Apresenta o número de médicos por especialidade
+select e.designacao, count(m.idMedico)
+from especialidade e, medico m
+where e.idEspecialidade = m.idEspecialidade
+group by m.idEspecialidade
+order by count(m.idMedico);
+
+#Apresenta o número de reprovações por modalidade
+select m.designacao, count(tc.data_hora)
+from modalidade m, atleta a, teste_clinico tc
+where m.idModalidade = a.idModalidade
