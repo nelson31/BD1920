@@ -77,8 +77,5 @@ public class JSONWrite {
         catch(IOException e){
             e.printStackTrace();
         }
-
-        //Imprimne na Tela o Objeto JSON para vizualização
-        System.out.println(jsonObject);
     }
 }
